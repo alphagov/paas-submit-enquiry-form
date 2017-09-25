@@ -20,7 +20,7 @@ class App < Sinatra::Base
 			message: "#{params['person_name']} would like to request an account",
 			person_email: params['person_email'],
 			person_name: params['person_name'],
-			label: ['paas', 'signup'],
+			label: ['paas'],
 		})
 		@ticket.agent_team_id = ENV['DESKPRO_TEAM_ID'].to_i if ENV['DESKPRO_TEAM_ID']
 		if not @ticket.valid?
@@ -44,7 +44,7 @@ class App < Sinatra::Base
 			person_email: params['person_email'],
 			person_name: params['person_name'],
 			message: params['message'],
-			label: ['paas', 'enquiry'],
+			label: ['paas'],
 		})
 		@ticket.agent_team_id = ENV['DESKPRO_TEAM_ID'].to_i if ENV['DESKPRO_TEAM_ID']
 		if not @ticket.valid?
