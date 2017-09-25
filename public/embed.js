@@ -10,7 +10,7 @@
 
 function _initForm(opts, el, trackingId, clientId) {
 	if (trackingId && clientId) {
-		el.src = el.src + '?ga_client_id=' + clientId + '&ga_tracking_id=' + trackingId;
+		el.src = el.src + '?ga_client_id=' + clientId + '&ga_tracking_id=' + trackingId + '&ga_hostname' + window.location.hostname;
 	}
 	iFrameResize(opts, el);
 }
@@ -23,7 +23,6 @@ function initForm(opts, el, trackingId, clientId) {
 			ga(function(tracker) {
 				var trackingId = tracker.get('trackingId');
 				var clientId = tracker.get('clientId');
-				console.log('got', trackingId, clientId);
 				_initForm(opts, el, trackingId, clientId);
 			});
 		} else if (trackingId === false) {

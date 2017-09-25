@@ -4,6 +4,7 @@
 	<%= erb :"partials/_textarea", :locals => {name: "message", label: "Message", hint: "How can we help you?", value: @ticket.message, error: errors_for(@ticket, :message)} %>
 	<input type="hidden" name="ga_tracking_id" value="<%= params['ga_tracking_id'] || '' %>" />
 	<input type="hidden" name="ga_client_id" value="<%= params['ga_client_id'] || '' %>" />
+	<input type="hidden" name="ga_hostname" value="<%= params['ga_hostname'] || '' %>" />
 	<input class="button" type="submit">
 </form>
 

@@ -87,7 +87,7 @@ class App < Sinatra::Base
 		# if google analytics tracking ids available send tracking event
 		def track_event(action)
 			if params['ga_tracking_id'] and params['ga_client_id']
-				tracker = Staccato.tracker(params['ga_tracking_id'], params['ga_client_id'], ssl: true, document_hostname: 'paas-submit.chrisfarms.dev.cloudpipelineapps.digital')
+				tracker = Staccato.tracker(params['ga_tracking_id'], params['ga_client_id'], ssl: true, document_hostname: params['ga_hostname'])
 				tracker.event(category: 'support', action: action, value: 1)
 			end
 		end
