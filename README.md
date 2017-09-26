@@ -19,13 +19,24 @@ The following environment variables should be set for correct deployment
 
 ## Development
 
+Dependecies:
+
+* Ruby
+* Node/npm (only required if recompiling sass)
+
 To start the server locally in development mode:
 
 ```
 DESKPRO_TEAM_ID=1 DESKPRO_API_KEY='REDACTED' DESKPRO_ENDPOINT='https://account.deskpro.com' make dev
 ```
 
-For info on other tasks such as rebuilding css assets:
+To recompile the stylesheet edit `sass/screen.css` then run:
+
+```
+make public/screen.css
+```
+
+Other things:
 
 ```
 make help
