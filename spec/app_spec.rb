@@ -3,13 +3,15 @@ ENV['DESKPRO_API_KEY'] = FAKE_DESKPRO_API_KEY
 ENV['DESKPRO_ENDPOINT'] = FAKE_DESKPRO_ENDPOINT
 ENV['DESKPRO_TEAM_ID'] = '1'
 
-require './app'
 require 'rack/test'
 
-RSpec.describe App do
+RSpec.describe "App" do
 
 	include Rack::Test::Methods
-	def app() App end
+
+	def app()
+		Rack::Builder.parse_file("config.ru").first
+	end
 
 	it "renders an index page" do
 		get '/'
@@ -41,6 +43,11 @@ RSpec.describe App do
 			"message" => "new signup",
 		}
 		expect(last_response).to be_ok
+	end
+
+	it "should not have a X-Frame-Options header in response" do
+		get '/support'
+		expect(last_response.header['X-Frame-Options']).to eq(nil)
 	end
 
 end

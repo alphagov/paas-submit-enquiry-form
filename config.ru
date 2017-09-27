@@ -4,7 +4,10 @@ require 'bundler'
 Bundler.require
 
 require 'sinatra'
-configure { set :server, :puma }
+configure do
+	set :server, :puma
+	set :protection, :except => :frame_options
+end
 
 require './app'
 run App

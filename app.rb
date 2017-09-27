@@ -5,6 +5,8 @@ require 'staccato'
 # App is the main Sinatra application
 class App < Sinatra::Base
 
+	set :protection, :except => [:frame_options]
+
 	get '/' do
 		erb :index
 	end
