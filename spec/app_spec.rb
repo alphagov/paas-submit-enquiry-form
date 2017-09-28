@@ -50,4 +50,9 @@ RSpec.describe "App" do
 		expect(last_response.header['X-Frame-Options']).to eq(nil)
 	end
 
+	it "should disallow robots via X-Robots-Tag" do
+		get '/'
+		expect(last_response.header['X-Robots-Tag']).to eq('noindex, nofollow')
+	end
+
 end
