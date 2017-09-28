@@ -7,6 +7,10 @@ class App < Sinatra::Base
 
 	set :protection, :except => [:frame_options]
 
+	after do
+		headers 'X-Robots-Tag' => 'noindex, nofollow'
+	end
+
 	get '/' do
 		erb :index
 	end
